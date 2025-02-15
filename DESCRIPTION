@@ -1,0 +1,10 @@
+Package: autogradeR
+Title: Make Autograding Easier
+Version: 0.0.0.9000
+Authors@R: 
+    person("Ryan", "McShane", "P.A.", "rmcshane@uchicago.edu", role = c("aut", "cre"))
+Description: Provides helper functions to make autograding easier. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
