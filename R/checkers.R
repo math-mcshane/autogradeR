@@ -10,6 +10,8 @@
 #' @returns a numeric count of violations for the specified functions
 #' @export
 #'
+#' @importFrom dplyr filter
+#'
 #' @examples
 #' example_script("generic_script") |>
 #'   check_for_special_functions(func_vector = "for")
@@ -30,6 +32,12 @@ check_for_special_functions = function(filename, func_vector) {
 #'
 #' @returns a vector of functions that are missing a `return` call
 #' @export
+#'
+#' @importFrom dplyr filter
+#' @importFrom dplyr mutate
+#' @importFrom dplyr lead
+#' @importFrom dplyr lag
+#' @importFrom dplyr pull
 #'
 #' @examples
 #' example_script("generic_script") |>
@@ -71,6 +79,12 @@ return_checker = function(filename) {
 #' @returns a tibble with counts of each pipe type, `|>` and `%>%`
 #' @export
 #'
+#' @importFrom dplyr filter
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarize
+#' @importFrom dplyr rename
+#' @importFrom tidyr complete
+#'
 #' @examples
 #' example_script("generic_tidyverse_script") |>
 #'   pipe_counter()
@@ -98,6 +112,8 @@ pipe_counter = function(filename) {
 #'
 #' @returns a count of dollar sign, `$`, uses, e.g., to extract elements of a `list` (and thus `data.frame`)
 #' @export
+#'
+#' @importFrom dplyr filter
 #'
 #' @examples
 #' example_script("generic_script") |>
