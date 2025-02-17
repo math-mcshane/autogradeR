@@ -2,7 +2,7 @@
 % Please edit documentation in R/checkers.R
 \name{check_for_special_functions}
 \alias{check_for_special_functions}
-\title{check_for_special_functions}
+\title{Check whether specified special functions have been used.}
 \usage{
 check_for_special_functions(filename, func_vector)
 }
@@ -16,10 +16,10 @@ a numeric count of violations for the specified functions
 }
 \description{
 A generic function to check whether specific special functions have been used
-special functions include \code{if}, \code{for}, \code{while}, \code{repeat}, \code{break}, \code{next}, \code{return}, \code{function}, \code{quote}, \code{switch}, \verb{\{}, \code{(}
-This link has the updated list of special function names
-https://cran.r-project.org/doc/manuals/r-release/R-ints.html#g_t_002eInternal-vs-_002ePrimitive
+special functions include \code{if}, \code{for}, \code{while}, \code{repeat}, \code{break}, \code{next}, \code{return}, \code{function}, \code{quote}, \code{switch}, \verb{\{}, \code{(}.
+\href{https://cran.r-project.org/doc/manuals/r-release/R-ints.html#g_t_002eInternal-vs-_002ePrimitive}{Check here} for the updated list of special function names.
 }
 \examples{
-try(check_for_special_functions())
+example_script("generic_script") |>
+  check_for_special_functions(func_vector = "for")
 }

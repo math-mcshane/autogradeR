@@ -2,10 +2,7 @@
 % Please edit documentation in R/checkers.R
 \name{pipe_counter}
 \alias{pipe_counter}
-\title{pipe_counter
-This function takes an R script and
-outputs a tibble with pipe counts by type
-always outputs a count for both}
+\title{Count \code{base} and \code{magrittr} pipe usages}
 \usage{
 pipe_counter(filename)
 }
@@ -16,11 +13,11 @@ pipe_counter(filename)
 a tibble with counts of each pipe type, \verb{|>} and \verb{\%>\%}
 }
 \description{
-pipe_counter
 This function takes an R script and
 outputs a tibble with pipe counts by type
 always outputs a count for both
 }
 \examples{
-try(pipe_counter())
+example_script("generic_tidyverse_script") |>
+  pipe_counter()
 }

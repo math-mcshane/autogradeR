@@ -2,9 +2,7 @@
 % Please edit documentation in R/checkers.R
 \name{return_checker}
 \alias{return_checker}
-\title{return_checker
-This function takes an R script and
-outputs a vector of function names that don't have return calls}
+\title{Checks whether functions call \code{return}.}
 \usage{
 return_checker(filename)
 }
@@ -15,10 +13,10 @@ return_checker(filename)
 a vector of functions that are missing a \code{return} call
 }
 \description{
-return_checker
 This function takes an R script and
 outputs a vector of function names that don't have return calls
 }
 \examples{
-try(return_checker())
+example_script("generic_script") |>
+  return_checker()
 }

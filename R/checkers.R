@@ -1,9 +1,8 @@
-#' check_for_special_functions
+#' Check whether specified special functions have been used.
 #'
 #' A generic function to check whether specific special functions have been used
-#' special functions include `if`, `for`, `while`, `repeat`, `break`, `next`, `return`, `function`, `quote`, `switch`, `{`, `(`
-#' This link has the updated list of special function names
-#' https://cran.r-project.org/doc/manuals/r-release/R-ints.html#g_t_002eInternal-vs-_002ePrimitive
+#' special functions include `if`, `for`, `while`, `repeat`, `break`, `next`, `return`, `function`, `quote`, `switch`, `{`, `(`.
+#' [Check here](https://cran.r-project.org/doc/manuals/r-release/R-ints.html#g_t_002eInternal-vs-_002ePrimitive) for the updated list of special function names.
 #'
 #' @param filename a character string which is a file name
 #' @param func_vector a character vector of special functions. It is best if this is just one or two functions, especially `for` and `while`
@@ -12,7 +11,8 @@
 #' @export
 #'
 #' @examples
-#' try(check_for_special_functions())
+#' example_script("generic_script") |>
+#'   check_for_special_functions(func_vector = "for")
 check_for_special_functions = function(filename, func_vector) {
   count_violations = filename |>
     get_parsed_tibble() |>
@@ -21,7 +21,8 @@ check_for_special_functions = function(filename, func_vector) {
   return(count_violations)
 }
 
-#' return_checker
+#' Checks whether functions call `return`.
+#'
 #' This function takes an R script and
 #' outputs a vector of function names that don't have return calls
 #'
@@ -31,7 +32,8 @@ check_for_special_functions = function(filename, func_vector) {
 #' @export
 #'
 #' @examples
-#' try(return_checker())
+#' example_script("generic_script") |>
+#'   return_checker()
 return_checker = function(filename) {
   missing_returns = filename |>
     get_parsed_tibble() |>
@@ -58,7 +60,8 @@ return_checker = function(filename) {
   return(missing_returns)
 }
 
-#' pipe_counter
+#' Count `base` and `magrittr` pipe usages
+#'
 #' This function takes an R script and
 #' outputs a tibble with pipe counts by type
 #' always outputs a count for both
@@ -69,7 +72,8 @@ return_checker = function(filename) {
 #' @export
 #'
 #' @examples
-#' try(pipe_counter())
+#' example_script("generic_tidyverse_script") |>
+#'   pipe_counter()
 pipe_counter = function(filename) {
   pipe_counts = filename |>
     get_parsed_tibble() |>
@@ -84,7 +88,8 @@ pipe_counter = function(filename) {
   return(pipe_counts)
 }
 
-#' dollar_sign_counter
+#' Count the number of dollar signs used.
+#'
 #' This function takes an R scripts and
 #' outputs a count of dollar sign uses
 #' works within function calls, too
@@ -95,7 +100,8 @@ pipe_counter = function(filename) {
 #' @export
 #'
 #' @examples
-#' try(dollar_sign_counter())
+#' example_script("generic_script") |>
+#'   dollar_sign_counter()
 dollar_sign_counter = function(filename) {
   dollar_count = filename |>
     get_parsed_tibble() |>

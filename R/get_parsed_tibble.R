@@ -1,4 +1,5 @@
-#' file_validation
+#' Validate a file.
+#'
 #' Checks whether file exists (error) and
 #' check whether file is an R script (warning)
 #'
@@ -8,9 +9,8 @@
 #' @export
 #'
 #' @examples
-#' try(file_validation("R/test_scripts/generic_script.R"))
-#' try(file_validation("README.md"))
-#' try(file_validation("not_a_real_file.R"))
+#' example_script("generic_script") |>
+#'   file_validation()
 file_validation = function(filename) {
   if (!base::file.exists(filename)) {
     stop("couldn't find file ", filename)
@@ -20,7 +20,8 @@ file_validation = function(filename) {
   }
 }
 
-#' get_parsed_tibble
+#' Parse a script into a `tibble`.
+#'
 #' Parses file and puts it in a tibble, with file validation
 #'
 #' @param filename a character string which is a file name
@@ -32,8 +33,8 @@ file_validation = function(filename) {
 #' @importFrom tibble as_tibble
 #'
 #' @examples
-#' try(get_parsed_tibble(filename = "R/checkers.R"))
-#' try(get_parsed_tibble(filename = "checkers.R", file_validation = FALSE))
+#' example_script("generic_script") |>
+#'   get_parsed_tibble()
 get_parsed_tibble = function(filename, file_validation = TRUE) {
   if (file_validation) file_validation(filename = filename)
   parsed_file = filename |>

@@ -2,8 +2,7 @@
 % Please edit documentation in R/get_parsed_tibble.R
 \name{get_parsed_tibble}
 \alias{get_parsed_tibble}
-\title{get_parsed_tibble
-Parses file and puts it in a tibble, with file validation}
+\title{Parse a script into a \code{tibble}.}
 \usage{
 get_parsed_tibble(filename, file_validation = TRUE)
 }
@@ -16,10 +15,9 @@ get_parsed_tibble(filename, file_validation = TRUE)
 a tibble of parsed code on which to operate
 }
 \description{
-get_parsed_tibble
 Parses file and puts it in a tibble, with file validation
 }
 \examples{
-try(get_parsed_tibble(filename = "R/checkers.R"))
-try(get_parsed_tibble(filename = "checkers.R", file_validation = FALSE))
+example_script("generic_script") |>
+  get_parsed_tibble()
 }

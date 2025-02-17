@@ -2,6 +2,7 @@
 
 export(check_for_special_functions)
 export(dollar_sign_counter)
+export(example_script)
 export(file_validation)
 export(get_parsed_tibble)
 export(pipe_counter)

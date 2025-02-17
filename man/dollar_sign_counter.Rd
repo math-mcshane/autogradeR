@@ -2,10 +2,7 @@
 % Please edit documentation in R/checkers.R
 \name{dollar_sign_counter}
 \alias{dollar_sign_counter}
-\title{dollar_sign_counter
-This function takes an R scripts and
-outputs a count of dollar sign uses
-works within function calls, too}
+\title{Count the number of dollar signs used.}
 \usage{
 dollar_sign_counter(filename)
 }
@@ -16,11 +13,11 @@ dollar_sign_counter(filename)
 a count of dollar sign, \code{$}, uses, e.g., to extract elements of a \code{list} (and thus \code{data.frame})
 }
 \description{
-dollar_sign_counter
 This function takes an R scripts and
 outputs a count of dollar sign uses
 works within function calls, too
 }
 \examples{
-try(dollar_sign_counter())
+example_script("generic_script") |>
+  dollar_sign_counter()
 }

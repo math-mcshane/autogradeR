@@ -2,9 +2,7 @@
 % Please edit documentation in R/get_parsed_tibble.R
 \name{file_validation}
 \alias{file_validation}
-\title{file_validation
-Checks whether file exists (error) and
-check whether file is an R script (warning)}
+\title{Validate a file.}
 \usage{
 file_validation(filename)
 }
@@ -12,12 +10,10 @@ file_validation(filename)
 \item{filename}{a character string which is a file name}
 }
 \description{
-file_validation
 Checks whether file exists (error) and
 check whether file is an R script (warning)
 }
 \examples{
-try(file_validation("R/test_scripts/generic_script.R"))
-try(file_validation("README.md"))
-try(file_validation("not_a_real_file.R"))
+example_script("generic_script") |>
+  file_validation()
 }
