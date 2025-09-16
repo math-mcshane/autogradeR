@@ -6,7 +6,8 @@ Authors@R:
       given = "Ryan P.A.", 
       family = "McShane", 
       email = "rmcshane@uchicago.edu", 
-      role = c("aut", "cre")
+      role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0001-5602-6232")
     )
 Description: Provides helper functions to make autograding easier. 
 License: MIT + file LICENSE
