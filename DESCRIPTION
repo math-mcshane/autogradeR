@@ -19,7 +19,8 @@ BugReports: https://github.com/math-mcshane/autogradeR/issues
 Imports:
   tibble,
   dplyr,
-  tidyr
+  tidyr, 
+  fs
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
