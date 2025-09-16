@@ -34,5 +34,18 @@ test_that(
   }
 )
 
+test_that(
+  desc = "Able to parse a script.", 
+  code = {
+    expect_snapshot(
+      x = get_parsed_tibble(
+        filename = example_script("generic_script")
+      )
+    )
+  }
+)
+
+
+
 
 
