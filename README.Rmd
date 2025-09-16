@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# autogradeR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+An `R` package to make autograding easier. 
+
+At this time, this is a collection of helper functions to make unit testing easier. This is a work-in-progress package; breaking changes should be expected. 
+
+
+## Installation
+
+You can install the development version of autogradeR from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("math-mcshane/autogradeR")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(autogradeR)
+## XXX FILL IN XXX
+```
+
+
+
