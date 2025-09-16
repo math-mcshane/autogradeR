@@ -27,7 +27,7 @@ test_that(
       object = file_validation(
         filename = paste0(
           system.file(package = "autogradeR"), 
-          "/../README.Rmd"
+          "/../DESCRIPTION"
         )
       )
     )

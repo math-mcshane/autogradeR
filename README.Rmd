@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 # autogradeR
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/math-mcshane/autogradeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/math-mcshane/autogradeR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 An `R` package to make autograding easier. 
