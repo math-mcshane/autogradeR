@@ -12,7 +12,7 @@ library(stringr)
 library(cowplot)
 library(GGally)
 
-my_sim = function(parm1, parm2){
+my_sim = function(parm1, parm2) {
   my_obs = rnorm(n = 10000, mean = parm1, sd = parm2)
   return(mean(my_obs))
 }
@@ -27,26 +27,22 @@ sim_data1 = expand.grid(mu = settingsA, sigma = settingsB)
 set.seed(123)
 for (i in seq_len(length.out = nrow(sim_data1))) {
   sim_data1$observedmean[i] = my_sim(
-    parm1 = sim_data1$mu[i], 
+    parm1 = sim_data1$mu[i],
     parm2 = sim_data1$sigma[i]
   )
 }
 
 # But we should use dplyr
 set.seed(123)
-sim_data2 = sim_data1 |> 
+sim_data2 = sim_data1 |>
   rowwise() |>
   mutate(observedmean = my_sim(parm1 = mu, parm2 = sigma))
 
-sim_data1 |> 
-  pivot_wider(names_from = mu, values_from = observedmean) |> 
-  gt::gt() |> 
+sim_data1 |>
+  pivot_wider(names_from = mu, values_from = observedmean) |>
+  gt::gt() |>
   gt::tab_options(latex.use_longtable = TRUE)
-sim_data2 |> 
-  pivot_wider(names_from = mu, values_from = observedmean) |> 
-  gt::gt() |> 
+sim_data2 |>
+  pivot_wider(names_from = mu, values_from = observedmean) |>
+  gt::gt() |>
   gt::tab_options(latex.use_longtable = TRUE)
-
-
-
-

@@ -36,7 +36,9 @@ file_validation = function(filename) {
 #' example_script("generic_script") |>
 #'   get_parsed_tibble()
 get_parsed_tibble = function(filename, file_validation = TRUE) {
-  if (file_validation) file_validation(filename = filename)
+  if (file_validation) {
+    file_validation(filename = filename)
+  }
   parsed_file = filename |>
     base::parse(file = _, keep.source = TRUE) |>
     utils::getParseData(x = _) |>
