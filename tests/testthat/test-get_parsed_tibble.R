@@ -17,10 +17,7 @@ test_that(desc = "Ensuring error message exists.", code = {
 test_that(desc = "Verifying warning.", code = {
   expect_warning(
     object = file_validation(
-      filename = paste0(
-        system.file(package = "autogradeR"),
-        "/../DESCRIPTION"
-      )
+      filename = fs::path_package(package = "autogradeR", "DESCRIPTION")
     )
   )
 })
