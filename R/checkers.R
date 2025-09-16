@@ -11,6 +11,7 @@
 #' @export
 #'
 #' @importFrom dplyr filter
+#' @importFrom rlang .data
 #'
 #' @examples
 #' example_script("generic_script") |>
@@ -18,7 +19,7 @@
 check_for_special_functions = function(filename, func_vector) {
   count_violations = filename |>
     get_parsed_tibble() |>
-    dplyr::filter(token %in% func_vector) |>
+    dplyr::filter(.data$token %in% func_vector) |>
     base::nrow()
   return(count_violations)
 }
@@ -38,6 +39,7 @@ check_for_special_functions = function(filename, func_vector) {
 #' @importFrom dplyr lead
 #' @importFrom dplyr lag
 #' @importFrom dplyr pull
+#' @importFrom rlang .data
 #'
 #' @examples
 #' example_script("generic_script") |>
@@ -45,26 +47,27 @@ check_for_special_functions = function(filename, func_vector) {
 return_checker = function(filename) {
   missing_returns = filename |>
     get_parsed_tibble() |>
-    dplyr::filter(terminal == TRUE) |>
+    dplyr::filter(.data$terminal == TRUE) |>
     dplyr::filter(
-      token == "FUNCTION" |
+      .data$token == "FUNCTION" |
         #Get the return calls
-        (token == "SYMBOL_FUNCTION_CALL" & text == "return") |
-        token == "SYMBOL"
+        (.data$token == "SYMBOL_FUNCTION_CALL" & .data$text == "return") |
+        .data$token == "SYMBOL"
     ) |>
     # Filter out SYMBOL tokens without FUNCTION in the next row
     dplyr::filter(
-      token != "SYMBOL" | (dplyr::lead(token, default = "") == "FUNCTION")
+      .data$token != "SYMBOL" |
+        (dplyr::lead(.data$token, default = "") == "FUNCTION")
     ) |>
     dplyr::mutate(
-      next_token = dplyr::lead(token),
-      previous_text = dplyr::lag(text)
+      next_token = dplyr::lead(.data$token),
+      previous_text = dplyr::lag(.data$text)
     ) |>
     dplyr::filter(
-      token == "FUNCTION" &
-        (is.na(next_token) | next_token != "SYMBOL_FUNCTION_CALL")
+      .data$token == "FUNCTION" &
+        (is.na(.data$next_token) | .data$next_token != "SYMBOL_FUNCTION_CALL")
     ) |>
-    dplyr::pull(previous_text)
+    dplyr::pull(.data$previous_text)
   return(missing_returns)
 }
 
@@ -84,6 +87,7 @@ return_checker = function(filename) {
 #' @importFrom dplyr summarize
 #' @importFrom dplyr rename
 #' @importFrom tidyr complete
+#' @importFrom rlang .data
 #'
 #' @examples
 #' example_script("generic_tidyverse_script") |>
@@ -92,12 +96,12 @@ pipe_counter = function(filename) {
   pipe_counts = filename |>
     get_parsed_tibble() |>
     dplyr::filter(
-      (token == "SPECIAL" & text == "%>%") |
-        (token == "PIPE" & text == "|>")
+      (.data$token == "SPECIAL" & .data$text == "%>%") |
+        (.data$token == "PIPE" & .data$text == "|>")
     ) |>
-    dplyr::group_by(text) |>
+    dplyr::group_by(.data$text) |>
     dplyr::summarize(n = dplyr::n()) |>
-    dplyr::rename(pipe = text) |>
+    dplyr::rename(pipe = .data$text) |>
     tidyr::complete(pipe = c("|>", "%>%"), fill = list(n = 0))
   return(pipe_counts)
 }
@@ -114,6 +118,7 @@ pipe_counter = function(filename) {
 #' @export
 #'
 #' @importFrom dplyr filter
+#' @importFrom rlang .data
 #'
 #' @examples
 #' example_script("generic_script") |>
@@ -121,7 +126,7 @@ pipe_counter = function(filename) {
 dollar_sign_counter = function(filename) {
   dollar_count = filename |>
     get_parsed_tibble() |>
-    dplyr::filter(token == "'$'" & text == "$") |>
+    dplyr::filter(.data$token == "'$'" & .data$text == "$") |>
     base::nrow()
   return(dollar_count)
 }
