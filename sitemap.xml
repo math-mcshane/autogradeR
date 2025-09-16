@@ -1,0 +1,16 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/check_for_special_functions.html</loc></url>
+<url><loc>/reference/dollar_sign_counter.html</loc></url>
+<url><loc>/reference/example_script.html</loc></url>
+<url><loc>/reference/file_validation.html</loc></url>
+<url><loc>/reference/get_parsed_tibble.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/pipe_counter.html</loc></url>
+<url><loc>/reference/return_checker.html</loc></url>
+</urlset>
+
